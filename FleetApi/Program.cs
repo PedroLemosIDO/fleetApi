@@ -1,4 +1,7 @@
 
+using FleetApi.Models.Database.Gps;
+using Microsoft.EntityFrameworkCore;
+
 namespace FleetApi
 {
     public class Program
@@ -6,6 +9,8 @@ namespace FleetApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<InternsqlContext>(opt => opt.UseSqlServer("Data Source=sqlidotmp.database.windows.net,1433;Initial Catalog=internsql;Persist Security Info=False;User ID=sqladminido;Password=Ido#Gesfrota2025;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;"));
 
             // Add services to the container.
 

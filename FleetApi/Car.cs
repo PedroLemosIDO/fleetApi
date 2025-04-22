@@ -1,6 +1,6 @@
 namespace FleetApi
 {
-    public class Data
+    public class Car
     {
         public DateOnly Date { get; set; }
 
