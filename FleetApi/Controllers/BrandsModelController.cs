@@ -43,6 +43,19 @@ namespace FleetApi.Controllers
             return Ok(brand);
         }
 
+        [Route("GetBrandByModel", Name = "GetBrandByModel")]
+        [HttpGet]
+        public IActionResult GetByModel(string name)
+        {
+            var model = _internsqlContext.BrandsModels.Where(brandTmp => brandTmp.ModelName.Equals(name)).FirstOrDefault();
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
         [Route("GetBrands", Name = "GetBrands")]
         [HttpGet]
         public IActionResult GetBrands()
