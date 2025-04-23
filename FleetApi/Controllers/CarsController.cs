@@ -42,7 +42,7 @@ namespace FleetApi.Controllers
             return Ok(car);
         }
 
-        [Route("GetCars2",Name = "GetCars")]
+        [Route("GetCars",Name = "GetCars")]
         [HttpGet]
         public IActionResult GetCars()
         {
