@@ -27,4 +27,10 @@ RUN dotnet publish "./FleetApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+
+# Expose the port that the application will run on
+EXPOSE 80
+ENV ASPNETCORE_URLS=http://*:80
+
 ENTRYPOINT ["dotnet", "FleetApi.dll"]
