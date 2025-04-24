@@ -73,8 +73,10 @@ namespace FleetApi.Controllers
                         Id = g.Id,
                         Latitude = g.Latitude,
                         Longitude = g.Longitude,
-                        HeadingDeg = g.HeadingDeg
-                    }).Take(1).ToList()
+                        HeadingDeg = g.HeadingDeg,
+                        SpeedKph = g.SpeedKph,
+                        RecordedAt = g.RecordedAt
+                    }).AsQueryable().OrderByDescending(x => x.RecordedAt).Take(1).ToList(),
                 }).ToList();
 
             if (cars == null)
