@@ -137,7 +137,7 @@ namespace FleetApi.Controllers
         [HttpGet]
         public IActionResult GetGeoDataByCarIdAll(int id)
         {
-            var geoData = _internsqlContext.GeoData.Where(data => data.CarId.Equals(id)).ToList();
+            var geoData = _internsqlContext.GeoData.Where(data => data.CarId.Equals(id)).OrderBy(data => data.RecordedAt).ToList();
 
             if (geoData == null)
             {
