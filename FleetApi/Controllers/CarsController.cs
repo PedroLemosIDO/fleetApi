@@ -1,5 +1,7 @@
 using FleetApi.Models.Database.Gps;
+using FleetApi.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FleetApi.Controllers
 {
@@ -33,7 +35,7 @@ namespace FleetApi.Controllers
         [HttpGet]
         public IActionResult GetByPlate(string plate)
         {
-            var car = _internsqlContext.Cars.Where(carTmp=>carTmp.LicensePlate.Equals(plate)).FirstOrDefault();
+            var car = _internsqlContext.Cars.Where(carTmp => carTmp.LicensePlate.Equals(plate)).FirstOrDefault();
 
             if (car == null)
             {
@@ -42,11 +44,38 @@ namespace FleetApi.Controllers
             return Ok(car);
         }
 
-        [Route("GetCars2",Name = "GetCars")]
+        [Route("GetCars2", Name = "GetCars")]
         [HttpGet]
         public IActionResult GetCars()
         {
-            var cars = _internsqlContext.Cars.ToList();
+            var cars = _internsqlContext
+                .Cars
+                .Include(x => x.BrandModel)
+                .Include(x => x.GeoData)
+                .Select(car => new
+                {
+                    Id = car.Id,
+                    Vin = car.Vin,
+                    BrandModelId = car.BrandModelId,
+                    LicensePlate = car.LicensePlate,
+                    Color = car.Color,
+                    PurchaseDate = car.PurchaseDate,
+                    IsActive = car.IsActive,
+                    BrandModel = new BrandModelViewModel()
+                    {
+                        Id = car.BrandModel.Id,
+                        BrandName = car.BrandModel.BrandName,
+                        ModelName = car.BrandModel.ModelName,
+                        Year = car.BrandModel.Year
+                    },
+                    GeoDataPoints = car.GeoData.Select(g => new GeoDataViewModel()
+                    {
+                        Id = g.Id,
+                        Latitude = g.Latitude,
+                        Longitude = g.Longitude,
+                        HeadingDeg = g.HeadingDeg
+                    }).Take(1).ToList()
+                }).ToList();
 
             if (cars == null)
             {
