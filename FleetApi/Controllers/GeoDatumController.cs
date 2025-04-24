@@ -132,5 +132,18 @@ namespace FleetApi.Controllers
             }
             return Ok(brands);
         }
+        
+        [Route("GetGeoDataByCarIdAll", Name = "GetGeoDataByCarIdAll")]
+        [HttpGet]
+        public IActionResult GetGeoDataByCarIdAll(int id)
+        {
+            var geoData = _internsqlContext.GeoData.Where(data => data.CarId.Equals(id)).ToList();
+
+            if (geoData == null)
+            {
+                return NotFound();
+            }
+            return Ok(geoData);
+        }
     }
 }
