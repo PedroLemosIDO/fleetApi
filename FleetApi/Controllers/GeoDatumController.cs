@@ -95,6 +95,31 @@ namespace FleetApi.Controllers
             return Ok(geoD);
         }
 
+        [Route("GetGeoDataByLatest", Name = "GetGeoDataByLatest")]
+        [HttpGet]
+        public IActionResult GetGeoDataByLatest()
+        {
+            var geoDlist = _internsqlContext.GeoData.ToList();
+
+            List<GeoDatum> eachLocal = new List<GeoDatum>();
+            List<int> eachId = new List<int>();
+
+            foreach(var geo in geoDlist)
+            {
+                if (!eachId.Contains(geo.CarId))
+                {
+                    eachLocal.Add(geoDlist.FindLast(elem => elem.CarId == geo.CarId));
+                    eachId.Add(geo.CarId);
+                }
+            }
+
+            if (eachLocal == null)
+            {
+                return NotFound();
+            }
+            return Ok(eachLocal);
+        }
+
         [Route("GetGeoDataAll", Name = "GetGeoDataAll")]
         [HttpGet]
         public IActionResult GetGeoDataAll()
