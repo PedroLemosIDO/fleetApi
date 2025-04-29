@@ -44,7 +44,7 @@ namespace FleetApi.Controllers
             return Ok(car);
         }
 
-        [Route("GetCars",Name = "GetCars")]
+        [Route("GetCars", Name = "GetCars")]
         [HttpGet]
         public IActionResult GetCars()
         {
@@ -75,7 +75,8 @@ namespace FleetApi.Controllers
                         Longitude = g.Longitude,
                         HeadingDeg = g.HeadingDeg,
                         SpeedKph = g.SpeedKph,
-                        RecordedAt = g.RecordedAt
+                        RecordedAt = g.RecordedAt,
+                        Ignition = g.Ignition
                     }).AsQueryable().OrderByDescending(x => x.RecordedAt).Take(1).ToList(),
                 }).ToList();
 

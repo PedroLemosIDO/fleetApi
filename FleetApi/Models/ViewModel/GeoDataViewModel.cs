@@ -15,5 +15,7 @@
         public decimal? SpeedKph { get; set; }
 
         public decimal? HeadingDeg { get; set; }
+
+        public bool Ignition { get; set; }
     }
 }

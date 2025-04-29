@@ -19,5 +19,7 @@ public partial class GeoDatum
 
     public decimal? HeadingDeg { get; set; }
 
+    public bool Ignition { get; set; }
+
     public virtual Car Car { get; set; } = null!;
 }
