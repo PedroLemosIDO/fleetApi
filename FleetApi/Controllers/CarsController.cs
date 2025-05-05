@@ -68,7 +68,7 @@ namespace FleetApi.Controllers
                         ModelName = car.BrandModel.ModelName,
                         Year = car.BrandModel.Year
                     },
-                    GeoDataPoints = car.GeoData.Select(g => new GeoDataViewModel()
+                    LastKnownLocation = car.GeoData.Select(g => new GeoDataViewModel()
                     {
                         Id = g.Id,
                         Latitude = g.Latitude,
@@ -77,7 +77,7 @@ namespace FleetApi.Controllers
                         SpeedKph = g.SpeedKph,
                         RecordedAt = g.RecordedAt,
                         Ignition = g.Ignition
-                    }).AsQueryable().OrderByDescending(x => x.RecordedAt).Take(1).ToList(),
+                    }).AsQueryable().OrderByDescending(x => x.RecordedAt).FirstOrDefault(),
                 }).ToList();
 
             if (cars == null)
