@@ -29,18 +29,15 @@ namespace FleetApi.Controllers
                         ModelName = "Corolla",
                         Year = 2021
                     },
-                    GeoDataPoints = new List<GeoDataViewModel>
+                    LastKnownLocation = new GeoDataViewModel
                     {
-                        new GeoDataViewModel
-                        {
-                            Id = 1,
-                            Latitude = 52.2297m,
-                            Longitude = 21.0122m,
-                            HeadingDeg = 90,
-                            SpeedKph = 50,
-                            RecordedAt = DateTime.UtcNow.AddMinutes(-10),
-                            Ignition = true
-                        }
+                        Id = 1,
+                        Latitude = 52.2297m,
+                        Longitude = 21.0122m,
+                        HeadingDeg = 90,
+                        SpeedKph = 50,
+                        RecordedAt = DateTime.UtcNow.AddMinutes(-10),
+                        Ignition = true
                     }
                 },
                 new
@@ -59,18 +56,15 @@ namespace FleetApi.Controllers
                         ModelName = "E-Class",
                         Year = 2020
                     },
-                    GeoDataPoints = new List<GeoDataViewModel>
+                    LastKnownLocation = new GeoDataViewModel
                     {
-                        new GeoDataViewModel
-                        {
-                            Id = 2,
-                            Latitude = 40.7128m,
-                            Longitude = -74.0060m,
-                            HeadingDeg = 180,
-                            SpeedKph = 0,
-                            RecordedAt = DateTime.UtcNow.AddHours(-1),
-                            Ignition = false
-                        }
+                        Id = 2,
+                        Latitude = 40.7128m,
+                        Longitude = -74.0060m,
+                        HeadingDeg = 180,
+                        SpeedKph = 0,
+                        RecordedAt = DateTime.UtcNow.AddHours(-1),
+                        Ignition = false
                     }
                 },
                 new
@@ -89,18 +83,15 @@ namespace FleetApi.Controllers
                         ModelName = "Fusion",
                         Year = 2022
                     },
-                    GeoDataPoints = new List<GeoDataViewModel>
+                    LastKnownLocation = new GeoDataViewModel
                     {
-                        new GeoDataViewModel
-                        {
-                            Id = 3,
-                            Latitude = 34.0522m,
-                            Longitude = -118.2437m,
-                            HeadingDeg = 45,
-                            SpeedKph = 65,
-                            RecordedAt = DateTime.UtcNow.AddMinutes(-5),
-                            Ignition = true
-                        }
+                        Id = 3,
+                        Latitude = 34.0522m,
+                        Longitude = -118.2437m,
+                        HeadingDeg = 45,
+                        SpeedKph = 65,
+                        RecordedAt = DateTime.UtcNow.AddMinutes(-5),
+                        Ignition = true
                     }
                 },
                 new
@@ -119,18 +110,15 @@ namespace FleetApi.Controllers
                         ModelName = "Civic",
                         Year = 2023
                     },
-                    GeoDataPoints = new List<GeoDataViewModel>
+                    LastKnownLocation = new GeoDataViewModel
                     {
-                        new GeoDataViewModel
-                        {
-                            Id = 4,
-                            Latitude = 51.5074m,
-                            Longitude = -0.1278m,
-                            HeadingDeg = 270,
-                            SpeedKph = 30,
-                            RecordedAt = DateTime.UtcNow.AddMinutes(-20),
-                            Ignition = true
-                        }
+                        Id = 4,
+                        Latitude = 51.5074m,
+                        Longitude = -0.1278m,
+                        HeadingDeg = 270,
+                        SpeedKph = 30,
+                        RecordedAt = DateTime.UtcNow.AddMinutes(-20),
+                        Ignition = true
                     }
                 },
                 new
@@ -149,18 +137,15 @@ namespace FleetApi.Controllers
                         ModelName = "Model S",
                         Year = 2019
                     },
-                    GeoDataPoints = new List<GeoDataViewModel>
+                    LastKnownLocation = new GeoDataViewModel
                     {
-                        new GeoDataViewModel
-                        {
-                            Id = 5,
-                            Latitude = 37.7749m,
-                            Longitude = -122.4194m,
-                            HeadingDeg = 135,
-                            SpeedKph = 0,
-                            RecordedAt = DateTime.UtcNow.AddDays(-1),
-                            Ignition = false
-                        }
+                        Id = 5,
+                        Latitude = 37.7749m,
+                        Longitude = -122.4194m,
+                        HeadingDeg = 135,
+                        SpeedKph = 0,
+                        RecordedAt = DateTime.UtcNow.AddDays(-1),
+                        Ignition = false
                     }
                 }
             };
